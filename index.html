@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Customer Churn Predictor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
+  <style>
+    /* Typing & Glow */
+    .glow {
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.3), 0 0 16px rgba(255, 255, 255, 0.2);
+    }
+
+    @keyframes blink {
+      0%, 100% { border-color: transparent; }
+      50% { border-color: #facc15; }
+    }
+
+    .typewriter::after {
+      content: '';
+      display: inline-block;
+      width: 10px;
+      height: 32px;
+      border-left: 3px solid #facc15;
+      margin-left: 6px;
+      animation: blink 0.7s infinite;
+    }
+
+    /* Animated Gradient */
+    .animated-bg {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(-45deg, #1e3a8a, #0f766e, #7e22ce, #9333ea);
+      background-size: 400% 400%;
+      animation: gradientMove 15s ease infinite;
+      z-index: -4;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Floating Blobs */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: 0.4;
+      animation: float 20s ease-in-out infinite alternate;
+      z-index: -2;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) translateX(0); }
+      100% { transform: translateY(60px) translateX(80px); }
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    section[id] {
+      scroll-margin-top: 100px;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-900 text-white font-sans relative overflow-x-hidden">
+
+  <!-- 🌈 Backgrounds -->
+  <div class="animated-bg"></div>
+  <div class="blob w-[300px] h-[300px] bg-purple-700 top-10 left-10"></div>
+  <div class="blob w-[200px] h-[200px] bg-pink-600 bottom-20 right-1/4"></div>
+  <div id="tsparticles" class="absolute top-0 left-0 w-full h-full z-0"></div>
+
+  <!-- 🌀 SVG Wave -->
+  <svg class="absolute top-0 left-0 z-0 opacity-20" viewBox="0 0 1440 320">
+    <path fill="#7e22ce" d="M0,128L40,160C80,192,160,256,240,240C320,224,400,128,480,106.7C560,85,640,139,720,160C800,181,880,171,960,176C1040,181,1120,203,1200,197.3C1280,192,1360,160,1400,144L1440,128V0H0Z">
+      <animate attributeName="d" dur="15s" repeatCount="indefinite" values="
+        M0,128L40,160C80,192,160,256,240,240C320,224,400,128,480,106.7C560,85,640,139,720,160C800,181,880,171,960,176C1040,181,1120,203,1200,197.3C1280,192,1360,160,1400,144L1440,128V0H0Z;
+        M0,64L40,80C80,96,160,128,240,160C320,192,400,224,480,192C560,160,640,64,720,85.3C800,107,880,181,960,192C1040,203,1120,149,1200,122.7C1280,96,1360,96,1400,96L1440,96V0H0Z;
+        M0,128L40,160C80,192,160,256,240,240C320,224,400,128,480,106.7C560,85,640,139,720,160C800,181,880,171,960,176C1040,181,1120,203,1200,197.3C1280,192,1360,160,1400,144L1440,128V0H0Z;">
+      </animate>
+    </path>
+  </svg>
+
+  <!-- 🔍 Navbar -->
+<nav class="sticky top-0 z-50 bg-gray-900 bg-opacity-80 shadow-lg backdrop-blur-md px-8 py-5 flex justify-between items-center">
+  <div class="text-xl font-bold text-yellow-400">🔍 Churn Predictor</div>
+  <div class="space-x-6">
+    <a href="#" class="hover:text-yellow-300">Home</a>
+    <a href="#features" class="hover:text-yellow-300">Features</a>
+    <a href="#about" class="hover:text-yellow-300">About</a>
+    <a href="/templates/how-to-use.html" class="hover:text-yellow-300">How to Use</a> <!-- ✅ New -->
+    <a href="/templates/form.html" class="hover:text-yellow-300">Get Started</a>
+  </div>
+</nav>
+
+
+<!-- ✨ Hero Section (Higher Placement + Button) -->
+<!-- ✨ Hero Section (Slightly Lower Placement) -->
+<div class="flex flex-col justify-center items-center h-[90vh] text-center px-4 pt-20 -mt-10 relative z-10">
+  <h1 id="typewriter" class="text-5xl md:text-6xl font-extrabold glow text-white typewriter mb-6"></h1>
+  <p class="text-base md:text-lg lg:text-xl text-gray-300 max-w-full mb-6">
+    <span class="text-yellow-300 font-semibold">Predict</span> if your 
+    <span class="text-lime-300 font-semibold">customers</span> will stay or leave with 
+    <span class="text-purple-300 font-semibold">AI-powered insights</span>.
+  </p>
+  <a href="/form" class="bg-yellow-400 hover:bg-yellow-300 text-black font-semibold px-6 py-3 rounded-full transition duration-300 shadow-md">
+    Get Started
+  </a>
+</div>
+
+
+
+  <!-- 🚀 Features Section -->
+  <section id="features" class="mt-12 px-6 md:px-20 text-center relative z-10 pb-24">
+    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white glow">Why Use This Predictor?</h2>
+    <div class="grid gap-6 md:grid-cols-3">
+
+      <div class="bg-gray-800 bg-opacity-50 p-6 rounded-lg border border-gray-700 hover:shadow-lg hover:border-purple-400 transition">
+        <h3 class="text-xl font-semibold text-yellow-300 mb-2">🔍 AI-Powered Analysis</h3>
+        <p class="text-gray-300">Get churn predictions based on real-time customer behavior using trained ML models.</p>
+      </div>
+
+      <div class="bg-gray-800 bg-opacity-50 p-6 rounded-lg border border-gray-700 hover:shadow-lg hover:border-lime-400 transition">
+        <h3 class="text-xl font-semibold text-lime-300 mb-2">⚡ Fast & Accurate</h3>
+        <p class="text-gray-300">Achieves high accuracy with fast predictions – perfect for customer retention strategies.</p>
+      </div>
+
+      <div class="bg-gray-800 bg-opacity-50 p-6 rounded-lg border border-gray-700 hover:shadow-lg hover:border-pink-400 transition">
+        <h3 class="text-xl font-semibold text-pink-300 mb-2">📊 Business Insights</h3>
+        <p class="text-gray-300">Helps you make better decisions by identifying which users are at risk of leaving.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 👤 About Section -->
+  <section id="about" class="px-6 md:px-20 text-center relative z-10 pb-24">
+    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white glow">About the Project</h2>
+    <p class="text-gray-300 max-w-3xl mx-auto">
+      This Customer Churn Prediction system helps businesses identify which customers are at risk of leaving by analyzing behavioral data using machine learning. Built with Python and a beautiful frontend to simplify prediction tasks.
+    </p>
+  </section>
+
+  <!-- 🔚 Footer -->
+  <footer class="bg-gray-900 text-gray-400 text-center py-6 border-t border-gray-800 mt-20 relative z-10">
+    Made with ❤️ by Neeru | Customer Churn Predictor
+  </footer>
+
+  <!-- 🔤 Typing Script -->
+  <script>
+    const text = "Customer Churn Prediction System";
+    let i = 0;
+    const speed = 180;
+
+    function typeWriter() {
+      const target = document.getElementById("typewriter");
+      if (i < text.length) {
+        target.innerHTML += text.charAt(i);
+        i++;
+      } else {
+        i = 0;
+        target.innerHTML = "";
+      }
+      setTimeout(typeWriter, speed);
+    }
+
+    window.onload = typeWriter;
+  </script>
+
+  <!-- 🔴 Particle Background -->
+  <script>
+    tsParticles.load("tsparticles", {
+      fullScreen: { enable: false },
+      particles: {
+        number: { value: 80 },
+        color: { value: "#ffffff" },
+        size: { value: 1.5 },
+        move: { enable: true, speed: 0.3 },
+        opacity: { value: 0.4 },
+        links: { enable: true, color: "#fff", distance: 100, opacity: 0.2 }
+      },
+      background: { color: "#0c0c1c" }
+    });
+  </script>
+
+</body>
+</html>

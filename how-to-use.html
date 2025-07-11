@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Churn Prediction Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
+  <style>
+    .glow {
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.3), 0 0 16px rgba(255, 255, 255, 0.2);
+    }
+
+    .animated-bg {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(-45deg, #1e3a8a, #0f766e, #7e22ce, #9333ea);
+      background-size: 400% 400%;
+      animation: gradientMove 15s ease infinite;
+      z-index: -4;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: 0.4;
+      animation: float 20s ease-in-out infinite alternate;
+      z-index: -2;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) translateX(0); }
+      100% { transform: translateY(60px) translateX(80px); }
+    }
+
+    .fade-in {
+      animation: fadeIn 0.8s ease-in-out forwards;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .loader {
+      display: inline-block;
+      width: 1rem;
+      height: 1rem;
+      border: 3px solid white;
+      border-radius: 50%;
+      border-top: 3px solid #facc15;
+      animation: spin 0.6s linear infinite;
+      margin-left: 0.5rem;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+
+<body class="bg-gray-900 text-white font-sans relative overflow-x-hidden">
+
+  <!-- 🌈 Backgrounds -->
+  <div class="animated-bg"></div>
+  <div class="blob w-[300px] h-[300px] bg-purple-700 top-10 left-10"></div>
+  <div class="blob w-[200px] h-[200px] bg-pink-600 bottom-20 right-1/4"></div>
+  <div id="tsparticles" class="absolute top-0 left-0 w-full h-full z-0"></div>
+
+  <!-- 🔍 Navbar -->
+  <nav class="sticky top-0 z-50 bg-gray-900 bg-opacity-80 shadow-lg backdrop-blur-md px-8 py-5 flex justify-between items-center">
+    <div class="text-xl font-bold text-yellow-400">🔍 Churn Predictor</div>
+    <div class="space-x-6">
+      <a href="/index.html" class="hover:text-yellow-300">Home</a>
+      <a href="/how-to-use.html" class="hover:text-yellow-300">How to Use</a>
+    </div>
+  </nav>
+
+  <!-- 🧾 Form Section -->
+  <section class="flex flex-col items-center justify-center min-h-screen px-4 relative z-10">
+    <h1 class="text-4xl md:text-5xl font-extrabold mb-6 glow text-center">Churn Prediction Form</h1>
+
+    <form id="churnForm" class="w-full max-w-3xl bg-gray-800 bg-opacity-60 p-8 rounded-lg border border-gray-700 space-y-5 shadow-lg">
+      <div><span>🗓️</span> <input type="number" name="tenure" placeholder="Tenure (months)" required class="w-full px-4 py-2 mt-1 rounded bg-gray-900 text-white border border-gray-700" /></div>
+
+      <div><span>💰</span> <input type="number" name="MonthlyCharges" placeholder="Monthly Charges (₹)" required class="w-full px-4 py-2 mt-1 rounded bg-gray-900 text-white border border-gray-700" /></div>
+
+      <div><span>💳</span> <input type="number" name="TotalCharges" placeholder="Total Charges (₹)" required class="w-full px-4 py-2 mt-1 rounded bg-gray-900 text-white border border-gray-700" /></div>
+
+      <div><span>📄</span>
+        <select name="Contract" required class="w-full px-4 py-2 mt-1 rounded bg-gray-900 text-white border border-gray-700">
+          <option disabled selected>Contract Type</option>
+          <option>Month-to-month</option>
+          <option>One year</option>
+          <option>Two year</option>
+        </select>
+      </div>
+
+      <div><span>🌐</span>
+        <select name="InternetService" required class="w-full px-4 py-2 mt-1 rounded bg-gray-900 text-white border border-gray-700">
+          <option disabled selected>Internet Service</option>
+          <option>DSL</option>
+          <option>Fiber optic</option>
+          <option>No</option>
+        </select>
+      </div>
+
+      <div><span>🛠️</span>
+        <select name="TechSupport" required class="w-full px-4 py-2 mt-1 rounded bg-gray-900 text-white border border-gray-700">
+          <option disabled selected>Tech Support</option>
+          <option>Yes</option>
+          <option>No</option>
+          <option>No internet service</option>
+        </select>
+      </div>
+
+      <div><span>🔒</span>
+        <select name="OnlineSecurity" required class="w-full px-4 py-2 mt-1 rounded bg-gray-900 text-white border border-gray-700">
+          <option disabled selected>Online Security</option>
+          <option>Yes</option>
+          <option>No</option>
+          <option>No internet service</option>
+        </select>
+      </div>
+
+      <div><span>💸</span>
+        <select name="PaymentMethod" required class="w-full px-4 py-2 mt-1 rounded bg-gray-900 text-white border border-gray-700">
+          <option disabled selected>Payment Method</option>
+          <option>Electronic check</option>
+          <option>Mailed check</option>
+          <option>Bank transfer (automatic)</option>
+          <option>Credit card (automatic)</option>
+        </select>
+      </div>
+
+      <button type="submit" class="w-full py-3 bg-yellow-400 text-black font-semibold rounded hover:bg-yellow-300 transition">
+        Predict
+      </button>
+    </form>
+
+    <div id="result" class="mt-6 text-xl text-lime-300 font-bold fade-in"></div>
+  </section>
+
+  <!-- 🔚 Footer -->
+  <footer class="bg-gray-900 text-gray-400 text-center py-6 border-t border-gray-800 relative z-10">
+    Made with ❤️ by Neeru | Churn Predictor
+  </footer>
+
+  <!-- 🌀 Particle Script -->
+  <script>
+    tsParticles.load("tsparticles", {
+      fullScreen: { enable: false },
+      particles: {
+        number: { value: 60 },
+        color: { value: "#ffffff" },
+        size: { value: 1.5 },
+        move: { enable: true, speed: 0.3 },
+        opacity: { value: 0.4 },
+        links: { enable: true, color: "#fff", distance: 100, opacity: 0.2 }
+      },
+      background: { color: "#0c0c1c" }
+    });
+  </script>
+
+  <!-- 🔄 JS Prediction Handler -->
+  <script>
+    const form = document.getElementById('churnForm');
+    const result = document.getElementById('result');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+
+      result.innerHTML = `⏳ Predicting... <span class="loader"></span>`;
+
+      try {
+        const response = await fetch('/predict', {
+          method: 'POST',
+          body: new URLSearchParams(data)
+        });
+
+        const res = await response.json();
+        result.innerHTML = res.result ? `✅ ${res.result}` : `❌ ${res.error}`;
+      } catch {
+        result.innerText = "❌ Error occurred. Try again.";
+      }
+    });
+  </script>
+</body>
+</html>
