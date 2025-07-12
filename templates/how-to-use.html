@@ -5,17 +5,14 @@
   <title>How to Use - Churn Predictor</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" type="image/png" href="/static/image.png">
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
+  <link href="https://unpkg.com/aos@next/dist/aos.css" rel="stylesheet" />
+
   <style>
     .glow {
-      text-shadow: 0 0 8px rgba(255, 255, 255, 0.3), 0 0 16px rgba(255, 255, 255, 0.2);
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.3), 0 0 20px rgba(255, 255, 255, 0.2);
     }
-
-    @keyframes blink {
-      0%, 100% { border-color: transparent; }
-      50% { border-color: #facc15; }
-    }
-
     .typewriter::after {
       content: '';
       display: inline-block;
@@ -25,7 +22,10 @@
       margin-left: 6px;
       animation: blink 0.7s infinite;
     }
-
+    @keyframes blink {
+      0%, 100% { border-color: transparent; }
+      50% { border-color: #facc15; }
+    }
     .animated-bg {
       position: fixed;
       width: 100%;
@@ -35,13 +35,11 @@
       animation: gradientMove 15s ease infinite;
       z-index: -4;
     }
-
     @keyframes gradientMove {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
-
     .blob {
       position: absolute;
       border-radius: 50%;
@@ -50,123 +48,124 @@
       animation: float 20s ease-in-out infinite alternate;
       z-index: -2;
     }
-
     @keyframes float {
       0% { transform: translateY(0) translateX(0); }
       100% { transform: translateY(60px) translateX(80px); }
     }
-
     html { scroll-behavior: smooth; }
     section[id] { scroll-margin-top: 100px; }
   </style>
 </head>
 <body class="bg-gray-900 text-white font-sans relative overflow-x-hidden">
 
-  <!-- Background Elements -->
+  <!-- 🌌 Backgrounds -->
   <div class="animated-bg"></div>
   <div class="blob w-[300px] h-[300px] bg-purple-700 top-10 left-10"></div>
   <div class="blob w-[200px] h-[200px] bg-pink-600 bottom-20 right-1/4"></div>
   <div id="tsparticles" class="absolute top-0 left-0 w-full h-full z-0"></div>
 
-  <!-- Navbar -->
+  <!-- 🔍 Navbar -->
   <nav class="sticky top-0 z-50 bg-gray-900 bg-opacity-80 shadow-lg backdrop-blur-md px-8 py-5 flex justify-between items-center">
     <div class="text-xl font-bold text-yellow-400">🔍 Churn Predictor</div>
     <div class="space-x-6">
-      <a href="/index.html" class="hover:text-yellow-300">Home</a>
-      <a href="/templates/form.html" class="hover:text-yellow-300">Get Started</a>
+        <a href="index.html" class="hover:text-yellow-300">Home</a>
+        <a href="/#features" class="hover:text-yellow-300">Features</a>
+        <a href="/#about" class="hover:text-yellow-300">About</a>
+        <a href="/how-to-use" class="hover:text-yellow-300">How to Use</a>
+        <a href="/form" class="hover:text-yellow-300">Get Started</a>
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <section class="flex flex-col justify-center items-center h-[80vh] text-center px-4 pt-10 relative z-10">
-    <h1 id="typewriter" class="text-4xl md:text-5xl font-extrabold glow text-white typewriter mb-6"></h1>
-    <p class="text-lg md:text-xl text-gray-300 max-w-2xl">
-      Learn how to effectively use the Churn Predictor to retain your valuable customers using AI-powered insights.
-    </p>
+  <!-- ✨ Typing Header -->
+  <section class="text-center pt-16 pb-8 relative z-10">
+    <h1 id="typewriter" class="text-4xl md:text-5xl font-extrabold glow text-white typewriter mb-2"></h1>
   </section>
 
-  <!-- Steps Section -->
+  <!-- 📘 How to Use - 6 Steps -->
   <section class="px-6 md:px-20 pb-24 relative z-10">
-    <h2 class="text-3xl font-bold text-yellow-300 mb-10 glow text-center">📘 How to Use</h2>
-    <div class="grid gap-8 md:grid-cols-2">
+    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
 
-      <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-yellow-400 transition">
+      <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-yellow-400 transition-transform transform hover:scale-105 duration-300" data-aos="fade-up">
         <h3 class="text-xl font-semibold text-yellow-300 mb-2">Step 1: Open the Form</h3>
-        <p class="text-gray-300">Click the "Get Started" button in the navbar to access the form.</p>
+        <p class="text-gray-300">Click the "Get Started" button in the navbar to access the prediction form.</p>
       </div>
 
-      <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-lime-400 transition">
-        <h3 class="text-xl font-semibold text-lime-300 mb-2">Step 2: Fill in Customer Details</h3>
-        <p class="text-gray-300">Provide necessary information such as tenure, charges, and contract type.</p>
+      <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-lime-400 transition-transform transform hover:scale-105 duration-300" data-aos="fade-up" data-aos-delay="100">
+        <h3 class="text-xl font-semibold text-lime-300 mb-2">Step 2: Fill in Details</h3>
+        <p class="text-gray-300">Enter customer tenure, billing amounts, services, and contract types.</p>
       </div>
 
-      <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-purple-400 transition">
-        <h3 class="text-xl font-semibold text-purple-300 mb-2">Step 3: Submit</h3>
-        <p class="text-gray-300">Click on the submit button to send the data to the prediction engine.</p>
+      <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-purple-400 transition-transform transform hover:scale-105 duration-300" data-aos="fade-up" data-aos-delay="200">
+        <h3 class="text-xl font-semibold text-purple-300 mb-2">Step 3: Submit to Predict</h3>
+        <p class="text-gray-300">Click on "🔍 Predict" to run the model and get a result instantly.</p>
       </div>
 
-      <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-pink-400 transition">
-        <h3 class="text-xl font-semibold text-pink-300 mb-2">Step 4: View the Result</h3>
-        <p class="text-gray-300">The model will instantly show whether the customer is likely to churn.</p>
+      <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-pink-400 transition-transform transform hover:scale-105 duration-300" data-aos="fade-up" data-aos-delay="300">
+        <h3 class="text-xl font-semibold text-pink-300 mb-2">Step 4: View Result</h3>
+        <p class="text-gray-300">See whether the customer is likely to churn, along with confidence %.</p>
+      </div>
+
+      <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-sky-400 transition-transform transform hover:scale-105 duration-300" data-aos="fade-up" data-aos-delay="400">
+        <h3 class="text-xl font-semibold text-sky-300 mb-2">Step 5: Visualize with Charts</h3>
+        <p class="text-gray-300">Interactive Bar, Doughnut, and Polar charts show churn stats visually.</p>
+      </div>
+
+      <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-emerald-400 transition-transform transform hover:scale-105 duration-300" data-aos="fade-up" data-aos-delay="500">
+        <h3 class="text-xl font-semibold text-emerald-300 mb-2">Step 6: Export to PDF</h3>
+        <p class="text-gray-300">Click "🧾 Export PDF" to save your prediction result and charts in one file.</p>
       </div>
 
     </div>
   </section>
 
-  <!-- Form Field Explanation -->
+  <!-- 📌 What Each Field Means -->
   <section class="px-6 md:px-20 pb-24 relative z-10">
     <h2 class="text-3xl font-bold text-yellow-300 mb-10 glow text-center">🧾 What Each Field Means</h2>
     <div class="grid gap-6 md:grid-cols-3">
 
-      <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-purple-400 transition">
+      <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-purple-400 transition" data-aos="zoom-in">
         <h3 class="text-lg font-semibold text-purple-300 mb-2">📅 Tenure</h3>
         <p class="text-gray-300">How long (in months) the customer has been with your company.</p>
       </div>
 
-      <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-lime-400 transition">
+      <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-lime-400 transition" data-aos="zoom-in" data-aos-delay="100">
         <h3 class="text-lg font-semibold text-lime-300 mb-2">💳 Monthly Charges</h3>
         <p class="text-gray-300">Monthly bill amount paid by the customer (e.g. ₹800).</p>
       </div>
 
-      <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-yellow-400 transition">
+      <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-yellow-400 transition" data-aos="zoom-in" data-aos-delay="200">
         <h3 class="text-lg font-semibold text-yellow-300 mb-2">🌐 Internet Service</h3>
         <p class="text-gray-300">Options include: DSL, Fiber optic, or No internet.</p>
       </div>
 
-      <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-pink-400 transition">
+      <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-pink-400 transition" data-aos="zoom-in" data-aos-delay="300">
         <h3 class="text-lg font-semibold text-pink-300 mb-2">📄 Contract</h3>
         <p class="text-gray-300">Select from Month-to-month, One year, or Two year contracts.</p>
       </div>
 
-      <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-blue-400 transition">
-        <h3 class="text-lg font-semibold text-blue-300 mb-2">📦 Services</h3>
-        <p class="text-gray-300">Indicate extra services like online security, backup, streaming, etc.</p>
+      <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-blue-400 transition" data-aos="zoom-in" data-aos-delay="400">
+        <h3 class="text-lg font-semibold text-blue-300 mb-2">🔐 Security & Support</h3>
+        <p class="text-gray-300">Indicate extra services like online security, tech support, etc.</p>
       </div>
 
-      <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-emerald-400 transition">
-        <h3 class="text-lg font-semibold text-emerald-300 mb-2">🎯 Senior Citizen</h3>
-        <p class="text-gray-300">Check Yes or No — helps personalize predictions.</p>
+      <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-emerald-400 transition" data-aos="zoom-in" data-aos-delay="500">
+        <h3 class="text-lg font-semibold text-emerald-300 mb-2">💰 Payment Method</h3>
+        <p class="text-gray-300">Choose from: Electronic check, Credit card, Bank transfer, etc.</p>
       </div>
 
-    </div>
-
-    <div class="text-center mt-12">
-      <a href="/templates/form.html" class="bg-yellow-400 hover:bg-yellow-300 text-black font-semibold px-6 py-3 rounded-full shadow-md transition duration-300">
-        Fill the Form Now
-      </a>
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- 🔚 Footer -->
   <footer class="bg-gray-900 text-gray-400 text-center py-6 border-t border-gray-800 mt-20 relative z-10">
     Made with ❤️ by Neeru | Churn Predictor
   </footer>
 
   <!-- Typing Script -->
   <script>
-    const text = "How to Use the Churn Predictor";
+    const text = "How to Use the Churn Predictor?";
     let i = 0;
-    const speed = 170;
+    const speed = 140;
 
     function typeWriter() {
       const target = document.getElementById("typewriter");
@@ -180,10 +179,14 @@
       setTimeout(typeWriter, speed);
     }
 
-    window.onload = typeWriter;
+    window.onload = () => {
+      typeWriter();
+      AOS.init();
+    };
   </script>
 
-  <!-- Particles -->
+  <!-- Particle + AOS -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
     tsParticles.load("tsparticles", {
       fullScreen: { enable: false },
@@ -198,6 +201,5 @@
       background: { color: "#0c0c1c" }
     });
   </script>
-
 </body>
 </html>
