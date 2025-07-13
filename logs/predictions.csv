@@ -1,2 +1,7 @@
 2025-07-12 15:17:24,2.0,32.0,3232.0,Month-to-month,DSL,Yes,No,Electronic check,Not Churn,64.0%
 2025-07-12 15:18:04,1.0,54.0,56.0,Month-to-month,DSL,No,Yes,Mailed check,Not Churn,73.0%
+2025-07-13 13:13:53,3.0,33.0,12.0,Month-to-month,DSL,No,Yes,Credit card (automatic),Churn,61.0%
+2025-07-13 13:14:05,3.0,33.0,122.0,Month-to-month,DSL,No,Yes,Credit card (automatic),Churn,50.0%
+2025-07-13 13:14:14,3.0,33.0,99.0,Month-to-month,DSL,No,Yes,Credit card (automatic),Churn,70.0%
+2025-07-13 13:14:20,3.0,33.0,99.0,Month-to-month,Fiber optic,No,Yes,Credit card (automatic),Churn,59.0%
+2025-07-13 13:14:25,3.0,33.0,99.0,Month-to-month,Fiber optic,Yes,Yes,Credit card (automatic),Not Churn,59.0%

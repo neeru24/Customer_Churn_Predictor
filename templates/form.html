@@ -39,17 +39,30 @@
   <div id="tsparticles" class="absolute top-0 left-0 w-full h-full z-0"></div>
 
   <!-- Navbar -->
-  <nav class="sticky top-0 z-50 bg-gray-900 bg-opacity-80 shadow-lg backdrop-blur-md px-6 py-4">
-    <div class="flex justify-between items-center max-w-7xl mx-auto">
-      <div class="text-xl font-bold text-yellow-400">🔍 Churn Predictor</div>
-      <button id="menu-toggle" class="text-yellow-400 md:hidden text-2xl">☰</button>
-      <div id="menu" class="hidden md:flex space-x-6">
-        <a href="/" class="hover:text-yellow-300">Home</a>
-        <a href="/#features" class="hover:text-yellow-300">Features</a>
-        <a href="/#about" class="hover:text-yellow-300">About</a>
-        <a href="/how-to-use" class="hover:text-yellow-300">How to Use</a>
-        <a href="/form" class="hover:text-yellow-300">Get Started</a>
-      </div>
+  <nav class="sticky top-0 z-50 bg-gray-900 bg-opacity-80 backdrop-blur-md px-4 sm:px-6 py-4 flex justify-between items-center">
+    <div class="text-xl font-bold text-yellow-400">🔍 Churn Predictor</div>
+    
+    <!-- Mobile menu button -->
+    <button id="menu-toggle" class="text-yellow-400 md:hidden text-2xl focus:outline-none" aria-label="Toggle menu">
+      ☰
+    </button>
+    
+    <!-- Desktop menu -->
+    <div class="hidden md:flex space-x-6 text-white">
+      <a href="/" class="hover:text-yellow-300 transition">Home</a>
+      <a href="/#features" class="hover:text-yellow-300 transition">Features</a>
+      <a href="/#about" class="hover:text-yellow-300 transition">About</a>
+      <a href="/how-to-use" class="hover:text-yellow-300 transition">How to Use</a>
+      <a href="/form" class="hover:text-yellow-300 transition">Get Started</a>
+    </div>
+    
+    <!-- Mobile menu (hidden by default) -->
+    <div id="mobile-menu" class="md:hidden absolute top-full left-0 w-full bg-gray-900 bg-opacity-95 backdrop-blur-md py-4 px-6 hidden flex-col space-y-4">
+      <a href="/" class="text-white hover:text-yellow-300 transition">Home</a>
+      <a href="/#features" class="text-white hover:text-yellow-300 transition">Features</a>
+      <a href="/#about" class="text-white hover:text-yellow-300 transition">About</a>
+      <a href="/how-to-use" class="text-white hover:text-yellow-300 transition">How to Use</a>
+      <a href="/form" class="text-white hover:text-yellow-300 transition">Get Started</a>
     </div>
   </nav>
 
@@ -116,9 +129,32 @@
       background: { color: "#0c0c1c" }
     });
 
-    document.getElementById('menu-toggle').onclick = () => {
-      document.getElementById('menu').classList.toggle('hidden');
-    };
+    // Mobile menu toggle functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.getElementById('menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      
+      menuToggle.addEventListener('click', function() {
+        mobileMenu.classList.toggle('hidden');
+        mobileMenu.classList.toggle('flex');
+        
+        // Change menu icon based on state
+        if (mobileMenu.classList.contains('hidden')) {
+          menuToggle.textContent = '☰';
+        } else {
+          menuToggle.textContent = '✕';
+        }
+      });
+      
+      // Close menu when clicking on a link
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          mobileMenu.classList.remove('flex');
+          menuToggle.textContent = '☰';
+        });
+      });
+    });
 
     const form = document.getElementById("churnForm");
     const resultText = document.getElementById("resultText");
@@ -152,17 +188,31 @@
     });
 
     function drawCharts(confidence, resultLabel) {
-      const churn = confidence;
+      // Fix: Swap the values based on the prediction result
+      const churn = resultLabel === "Churn" ? confidence : 100 - confidence;
       const notChurn = 100 - churn;
+      
       const data = {
         labels: ["Churn", "Not Churn"],
-        datasets: [{ data: [churn, notChurn], backgroundColor: ['#ef4444','#10b981'] }]
+        datasets: [{ 
+          data: [churn, notChurn], 
+          backgroundColor: ['#ef4444','#10b981'] 
+        }]
       };
-      const opts = { responsive:false, maintainAspectRatio:false, plugins:{legend:{position:'bottom'}, tooltip:{enabled:true}}};
-      [chart1,chart2,chart3].forEach(c=>c&&c.destroy());
-      chart1 = new Chart("barChart",{type:'bar',data,options:opts});
-      chart2 = new Chart("doughnutChart",{type:'doughnut',data,options:opts});
-      chart3 = new Chart("polarChart",{type:'polarArea',data,options:opts});
+      
+      const opts = {
+        responsive: false, 
+        maintainAspectRatio: false, 
+        plugins: {
+          legend: { position: 'bottom' }, 
+          tooltip: { enabled: true }
+        }
+      };
+      
+      [chart1, chart2, chart3].forEach(c => c && c.destroy());
+      chart1 = new Chart("barChart", { type: 'bar', data, options: opts });
+      chart2 = new Chart("doughnutChart", { type: 'doughnut', data, options: opts });
+      chart3 = new Chart("polarChart", { type: 'polarArea', data, options: opts });
     }
 
     async function exportPDF() {
