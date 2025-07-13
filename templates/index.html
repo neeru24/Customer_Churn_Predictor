@@ -52,15 +52,30 @@
   </svg>
 
   <!-- 🔍 Navbar -->
-  <nav class="sticky top-0 z-50 bg-gray-900 bg-opacity-80 backdrop-blur-md px-6 py-4 flex justify-between items-center" data-aos="fade-down">
+  <nav class="sticky top-0 z-50 bg-gray-900 bg-opacity-80 backdrop-blur-md px-4 sm:px-6 py-4 flex justify-between items-center" data-aos="fade-down">
     <div class="text-xl font-bold text-yellow-400">🔍 Churn Predictor</div>
-    <button id="menu-toggle" class="text-yellow-400 md:hidden text-2xl">☰</button>
-    <div id="menu" class="hidden md:flex space-x-6 text-white">
-      <a href="#" class="hover:text-yellow-300">Home</a>
-      <a href="#features" class="hover:text-yellow-300">Features</a>
-      <a href="#about" class="hover:text-yellow-300">About</a>
-      <a href="/how-to-use" class="hover:text-yellow-300">How to Use</a>
-      <a href="/form" class="hover:text-yellow-300">Get Started</a>
+    
+    <!-- Mobile menu button -->
+    <button id="menu-toggle" class="text-yellow-400 md:hidden text-2xl focus:outline-none" aria-label="Toggle menu">
+      ☰
+    </button>
+    
+    <!-- Desktop menu -->
+    <div class="hidden md:flex space-x-6 text-white">
+      <a href="#" class="hover:text-yellow-300 transition">Home</a>
+      <a href="#features" class="hover:text-yellow-300 transition">Features</a>
+      <a href="#about" class="hover:text-yellow-300 transition">About</a>
+      <a href="/how-to-use" class="hover:text-yellow-300 transition">How to Use</a>
+      <a href="/form" class="hover:text-yellow-300 transition">Get Started</a>
+    </div>
+    
+    <!-- Mobile menu (hidden by default) -->
+    <div id="mobile-menu" class="md:hidden absolute top-full left-0 w-full bg-gray-900 bg-opacity-95 backdrop-blur-md py-4 px-6 hidden flex-col space-y-4">
+      <a href="#" class="text-white hover:text-yellow-300 transition">Home</a>
+      <a href="#features" class="text-white hover:text-yellow-300 transition">Features</a>
+      <a href="#about" class="text-white hover:text-yellow-300 transition">About</a>
+      <a href="/how-to-use" class="text-white hover:text-yellow-300 transition">How to Use</a>
+      <a href="/form" class="text-white hover:text-yellow-300 transition">Get Started</a>
     </div>
   </nav>
 
@@ -114,9 +129,35 @@
       particles: { number: { value: 80 }, color: { value: "#fff" }, size: { value: 1.5 }, move: { enable: true, speed: 0.3 }, opacity: { value: 0.4 }, links: { enable: true, distance:100, opacity:0.2 } },
       background: { color: "#0c0c1c" }
     });
-    document.getElementById('menu-toggle').addEventListener('click', () => {
-      document.getElementById('menu').classList.toggle('hidden');
+    
+    // Mobile menu toggle functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.getElementById('menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      
+      menuToggle.addEventListener('click', function() {
+        mobileMenu.classList.toggle('hidden');
+        mobileMenu.classList.toggle('flex');
+        
+        // Change menu icon based on state
+        if (mobileMenu.classList.contains('hidden')) {
+          menuToggle.textContent = '☰';
+        } else {
+          menuToggle.textContent = '✕';
+        }
+      });
+      
+      // Close menu when clicking on a link (optional)
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          mobileMenu.classList.remove('flex');
+          menuToggle.textContent = '☰';
+        });
+      });
     });
+    
+    // Typewriter effect
     const txt = "Customer Churn Prediction System", el = document.getElementById('typewriter');
     let i = 0;
     (function typeWriter() {
