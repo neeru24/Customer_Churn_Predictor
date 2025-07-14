@@ -14,6 +14,13 @@
 Customer churn refers to when an existing customer stops doing business with a company. This predictor uses a **supervised machine learning pipeline** to analyze structured customer data and forecast churn probability with precision. The app serves as a decision-support system for customer success teams.
 
 ---
+## 🚀 Key Capabilities
+
+🔍 Predictive Analytics &nbsp;&nbsp;|&nbsp;&nbsp; 🧠 Intelligent Input Interface &nbsp;&nbsp;|&nbsp;&nbsp; 📊 Dynamic Data Visualizations &nbsp;&nbsp;|&nbsp;&nbsp; 🧾 Report Generation (PDF) &nbsp;&nbsp;|&nbsp;&nbsp; 🎨 Gradient-Driven UI/UX &nbsp;&nbsp;|&nbsp;&nbsp; 📱 Cross-Platform Responsiveness &nbsp;&nbsp;|&nbsp;&nbsp; ⚙️ Flask-Powered ML Engine
+
+
+---
+
 
 ## ⚙️ Architecture
 
@@ -29,40 +36,6 @@ flowchart TD
 
 ---
 ## 📸 UI Snapshots
----
-
-## 🚀 Features
-
-<table>
-  <tr>
-    <td>🔍 <strong>ML Prediction</strong></td>
-    <td>Classifies if a customer will churn based on form inputs</td>
-  </tr>
-  <tr>
-    <td>📋 <strong>Simple Input Form</strong></td>
-    <td>Collects key customer details like tenure, billing, services</td>
-  </tr>
-  <tr>
-    <td>📊 <strong>Charts</strong></td>
-    <td>Interactive Bar, Doughnut, and Polar Area charts</td>
-  </tr>
-  <tr>
-    <td>🧾 <strong>PDF Export</strong></td>
-    <td>Download results & visuals in a clean report</td>
-  </tr>
-  <tr>
-    <td>🎨 <strong>Modern UI</strong></td>
-    <td>Tailwind CSS, gradient background, AOS & particles</td>
-  </tr>
-  <tr>
-    <td>📱 <strong>Responsive Design</strong></td>
-    <td>Works across all screen sizes and devices</td>
-  </tr>
-  <tr>
-    <td>⚙️ <strong>Flask Backend</strong></td>
-    <td>Runs a trained machine learning pipeline in Python</td>
-  </tr>
-</table>
 
 ---
 
@@ -76,3 +49,95 @@ flowchart TD
 | 📊 **Visualization** | ![Chart.js](https://img.shields.io/badge/-Chart.js-FF6384?logo=chartdotjs&logoColor=white) |
 | 📎 **Export**      | ![xhtml2pdf](https://img.shields.io/badge/-xhtml2pdf-blueviolet) |
 | ✨ **Aesthetics**   | ![tsparticles](https://img.shields.io/badge/-tsparticles-blue?logo=data:image/svg+xml;base64,<svg></svg>) |
+
+--- 
+
+## 📁 Folder Structure
+
+```
+customer-churn-predictor/
+│
+├── static/                 # Static files (CSS, JS, icons)
+│   └── styles, particles, icons
+│
+├── templates/              # HTML templates for rendering pages
+│   ├── index.html          # Landing page
+│   ├── form.html           # Input form for user data
+│   └── how-to-use.html     # User Guide
+│
+├── churn_model.pkl         # Trained machine learning model
+├── scaler.pkl              # Scaler for preprocessing
+├── model_columns.pkl       # Feature columns used by the model
+|
+├── train_model.py          # Script to train & export ML model artifacts
+├── app.py                  # Main Flask application
+├── requirements.txt        # Python dependencies
+└── README.md               # Project documentation
+```
+
+
+---
+
+## 🧪 ML Model Details
+
+| 🧩 **Component**       | 📌 **Details**                                                                 |
+|------------------------|--------------------------------------------------------------------------------|
+| 🧠 **Model Type**      | Logistic Regression *(Binary Classification)*                                  |
+| 📚 **Dataset**         | [Telco Customer Churn](https://www.kaggle.com/blastchar/telco-customer-churn) |
+| 📊 **Features Used**   | Tenure, Monthly Charges, Contract Type, Internet Service, Security Add-ons, Payment Method |
+| 🧹 **Preprocessing**   | Label Encoding, Standard Scaling                                                |
+| 📈 **Evaluation**      | Accuracy, ROC-AUC Score, Confusion Matrix                                      |
+| 🛠️ **Tools/Libraries** | Scikit-learn, Pandas, NumPy, Seaborn                                            |
+
+---
+
+## ⚙️ Setup & Installation
+
+**⚙️ Clone the Repository**
+```bash
+git clone https://github.com/your-username/customer-churn-predictor.git
+cd customer-churn-predictor
+```
+
+**🧪 (Optional) Create & Activate Virtual Environment**
+```bash
+# For macOS / Linux
+python -m venv venv
+source venv/bin/activate
+```
+
+```bash
+# For Windows
+python -m venv venv
+venv\Scripts\activate
+```
+
+**📦 Install Dependencies**
+```bash
+pip install -r requirements.txt
+```
+
+**🚀 Run the Flask App**
+```bash
+python app.py
+```
+
+**🌐 Access the App** 
+```bash
+http://127.0.0.1:5000
+```
+
+---
+
+## 📬 Contact
+
+**👩‍💻 Developed by:** Neeru Gangarh  
+**🔗 LinkedIn:** [linkedin.com/in/neerugangarh](https://www.linkedin.com/in/neerugangarh)  
+**📂 Contributions:** Feel free to fork or contribute!
+
+---
+
+## 📝 License
+
+This project is licensed under the **MIT License**.  
+See the [LICENSE](LICENSE) file for more details.
