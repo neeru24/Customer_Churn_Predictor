@@ -37,6 +37,18 @@ flowchart TD
 ---
 ## 📸 UI Snapshots
 
+<table>
+  <tr>
+    <td><img src="static/Home.png" width="500"/></td>
+    <td><img src="static/Features.png" width="500"/></td>
+  </tr>
+   <tr>
+    <td><img src="static/form.png" width="500"/></td>
+    <td><img src="static/charts.png" width="500"/></td>
+  </tr>
+</table>
+
+
 ---
 
 ## 🛠️ Tech Stack
