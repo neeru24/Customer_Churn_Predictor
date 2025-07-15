@@ -16,7 +16,8 @@ Customer churn refers to when an existing customer stops doing business with a c
 ---
 ## 🚀 Key Capabilities
 
-🔍 Predictive Analytics &nbsp;&nbsp;|&nbsp;&nbsp; 🧠 Intelligent Input Interface &nbsp;&nbsp;|&nbsp;&nbsp; 📊 Dynamic Data Visualizations &nbsp;&nbsp;|&nbsp;&nbsp; 🧾 Report Generation (PDF) &nbsp;&nbsp;|&nbsp;&nbsp; 🎨 Gradient-Driven UI/UX &nbsp;&nbsp;|&nbsp;&nbsp; 📱 Cross-Platform Responsiveness &nbsp;&nbsp;|&nbsp;&nbsp; ⚙️ Flask-Powered ML Engine
+
+  <img src="static/Key Capabilities.png" width="700"/>
 
 
 ---
